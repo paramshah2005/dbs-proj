@@ -6,10 +6,9 @@ export default function Navbar() {
   const path = usePathname();
 
   const linkStyle = (href: string): string =>
-    `px-4 py-2 rounded-lg transition text-sm ${
-      path === href
-        ? "bg-white/20 text-white"
-        : "text-gray-300 hover:bg-white/10 hover:text-white"
+    `px-4 py-2 rounded-lg transition text-sm ${path === href
+      ? "bg-white/20 text-white"
+      : "text-gray-300 hover:bg-white/10 hover:text-white"
     }`;
 
   return (
@@ -17,19 +16,23 @@ export default function Navbar() {
       <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl px-3 py-2 flex gap-2">
 
         <Link href="/" className={linkStyle("/")}>
-           Transactions
+          Transactions
         </Link>
 
         <Link href="/transfer" className={linkStyle("/transfer")}>
-            Transfer
+          Transfer
+        </Link>
+          
+        <Link href="/history" className={linkStyle("/history")}>
+          History
         </Link>
 
         <Link href="/create-account" className={linkStyle("/create-account")}>
-           Create
+          Create
         </Link>
 
         <Link href="/delete-account" className={linkStyle("/delete-account")}>
-           Delete
+          Delete
         </Link>
 
       </div>
