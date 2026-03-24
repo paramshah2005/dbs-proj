@@ -20,6 +20,10 @@ export default function Navbar() {
            Transactions
         </Link>
 
+        <Link href="/transfer" className={linkStyle("/transfer")}>
+            Transfer
+        </Link>
+
         <Link href="/create-account" className={linkStyle("/create-account")}>
            Create
         </Link>

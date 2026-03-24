@@ -22,8 +22,14 @@ export async function POST(req: Request): Promise<Response> {
 
     const res: ApiResponse = { message: "Transfer successful" };
     return Response.json(res);
-  } catch {
-    const res: ApiResponse = { error: "Transfer failed" };
+  } catch (err: unknown) {
+    let message = "Transfer failed";
+
+    if (err instanceof Error) {
+      message = err.message;
+    }
+
+    const res: ApiResponse = { error: message };
     return Response.json(res);
   }
 }
