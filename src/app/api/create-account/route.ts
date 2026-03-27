@@ -2,7 +2,6 @@ import { pool } from "@/lib/db";
 
 type RequestBody = {
   name: string;
-  city: string;
   balance: number;
 };
 
@@ -17,8 +16,8 @@ export async function POST(req: Request): Promise<Response> {
     const body: RequestBody = await req.json();
 
     const result = await pool.query(
-      "SELECT create_account($1, $2, $3) AS acc_no",
-      [body.name, body.city, body.balance]
+      "SELECT create_account($1, $2) AS acc_no",
+      [body.name, body.balance]
     );
 
     const accNo: number = result.rows[0].acc_no;

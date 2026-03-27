@@ -10,7 +10,6 @@ type ApiResponse = {
 
 export default function CreateAccount() {
   const [name, setName] = useState<string>("");
-  const [city, setCity] = useState<string>("");
   const [balance, setBalance] = useState<string>("");
 
   const handleCreate = async (): Promise<void> => {
@@ -24,7 +23,6 @@ export default function CreateAccount() {
         },
         body: JSON.stringify({
           name,
-          city,
           balance: Number(balance),
         }),
       });
@@ -36,7 +34,6 @@ export default function CreateAccount() {
       if (data.message && data.acc_no !== undefined) {
         toast.success(`Account created. Account No: ${data.acc_no}`);
         setName("");
-        setCity("");
         setBalance("");
       } else if (data.error) {
         toast.error(data.error);
@@ -58,13 +55,6 @@ export default function CreateAccount() {
           placeholder="Customer Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-        />
-
-        <input
-          className="w-full p-3 rounded bg-white/10 border border-white/20"
-          placeholder="City"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
         />
 
         <input
